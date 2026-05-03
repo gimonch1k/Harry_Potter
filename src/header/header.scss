@@ -1,0 +1,23 @@
+.header {
+  position: relative;
+  background-color: #3a3a3a;
+  padding: 15px;
+  border-bottom: 1px solid #fff;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    text-align: center;
+    color: #de9911;
+  }
+}
+
+@media screen and (min-width: 300px) {
+  .header {
+    &__title {
+      font-size: 24px;
+    }
+  }
+}

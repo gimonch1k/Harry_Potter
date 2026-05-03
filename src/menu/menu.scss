@@ -1,0 +1,45 @@
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(51, 51, 51, 0.753);
+  &__content {
+    position: absolute;
+    right: 0;
+    height: 100%;
+    width: 50%;
+    background-color: #2b0000;
+    padding: 20px;
+    border-left: 1px solid #fff;
+  }
+  &__link {
+    display: block;
+    font-weight: 700;
+    font-size: 20px;
+    color: #de9911;
+    margin-top: 20px;
+  }
+  &__img {
+    position: absolute;
+    width: 100px;
+    height: 56px;
+    object-fit: cover;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  &__close {
+    width: 25px;
+  }
+}
+
+@media screen and (min-width: 360px) {
+  .menu {
+    &__img {
+      width: 150px;
+      height: 84px;
+    }
+  }
+}

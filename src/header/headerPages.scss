@@ -1,0 +1,16 @@
+.headerpages {
+  display: flex;
+  column-gap: 10px;
+  display: none;
+  &__link,
+  &__divider {
+    color: #fff;
+    font-weight: 700;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .headerpages {
+    display: flex;
+  }
+}
