@@ -1,3 +1,5 @@
+@use "../style/variables" as *;
+
 .burger {
   position: absolute;
   display: flex;
@@ -8,7 +10,7 @@
   span {
     width: 26px;
     height: 3px;
-    background-color: #000;
+    background-color: $orange;
   }
 }
 

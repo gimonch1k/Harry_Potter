@@ -1,6 +1,8 @@
+@use "../style/variables" as *;
+
 .header {
   position: relative;
-  background-color: #3a3a3a;
+  background-color: $dark-red;
   padding: 15px;
   border-bottom: 1px solid #fff;
   display: flex;
@@ -10,7 +12,7 @@
     font-size: 22px;
     font-weight: 700;
     text-align: center;
-    color: #de9911;
+    color: $orange;
   }
 }
 

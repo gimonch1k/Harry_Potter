@@ -1,3 +1,5 @@
+@use "../style/variables" as *;
+
 .menu {
   position: fixed;
   top: 0;
@@ -10,7 +12,7 @@
     right: 0;
     height: 100%;
     width: 50%;
-    background-color: #2b0000;
+    background-color: $dark-red;
     padding: 20px;
     border-left: 1px solid #fff;
   }
@@ -18,7 +20,7 @@
     display: block;
     font-weight: 700;
     font-size: 20px;
-    color: #de9911;
+    color: $orange;
     margin-top: 20px;
   }
   &__img {
