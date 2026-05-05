@@ -1,0 +1,250 @@
+import { Component } from "react";
+
+class Spinner extends Component {
+  render() {
+    return (
+      <>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 100 100"
+          preserveAspectRatio="xMidYMid"
+          width="228"
+          height="228"
+          style={{
+            shapeRendering: "auto",
+            display: "block",
+            background: "transparent",
+            margin: "0 auto",
+          }}
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+        >
+          <g>
+            <g transform="rotate(0 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.7974481658692184s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(32.72727272727273 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.7177033492822966s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(65.45454545454545 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.6379585326953747s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(98.18181818181819 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.5582137161084529s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(130.9090909090909 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.47846889952153104s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(163.63636363636363 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.3987240829346092s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(196.36363636363637 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.31897926634768736s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(229.0909090909091 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.23923444976076552s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(261.8181818181818 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.15948963317384368s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(294.54545454545456 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="-0.07974481658692184s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g transform="rotate(327.27272727272725 50 50)">
+              <rect
+                fill="#ff3d00"
+                height="8"
+                width="5"
+                ry="2.64"
+                rx="2.5"
+                y="22"
+                x="47.5"
+              >
+                <animate
+                  repeatCount="indefinite"
+                  begin="0s"
+                  dur="0.8771929824561403s"
+                  keyTimes="0;1"
+                  values="1;0"
+                  attributeName="opacity"
+                ></animate>
+              </rect>
+            </g>
+            <g></g>
+          </g>
+        </svg>
+      </>
+    );
+  }
+}
+
+export default Spinner;
