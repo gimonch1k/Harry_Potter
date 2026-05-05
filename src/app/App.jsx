@@ -1,15 +1,19 @@
 import { Component } from "react";
 
 import Header from "../header/Header";
+import RandomChar from "../randomChar/RandomChar";
 
 import "./App.scss";
 
 class App extends Component {
   render() {
     return (
-      <div className="app">
+      <>
         <Header />
-      </div>
+        <div className="app">
+          <RandomChar />
+        </div>
+      </>
     );
   }
 }
