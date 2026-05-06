@@ -1,3 +1,17 @@
 .app {
+  width: fit-content;
   padding: 80px 10px 10px 10px;
+  margin: 0 auto;
+  &__wrapper {
+    padding-top: 40px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .app {
+    &__wrapper {
+      display: flex;
+      align-items: flex-start;
+    }
+  }
 }
