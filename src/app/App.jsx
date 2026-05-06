@@ -1,8 +1,9 @@
 import { Component } from "react";
 
 import Header from "../header/Header";
-import RandomChar from "../randomChar/RandomChar";
 import Menu from "../menu/Menu";
+import RandomChar from "../randomChar/RandomChar";
+import CharList from "../charList/CharList";
 
 import "./App.scss";
 
@@ -29,6 +30,7 @@ class App extends Component {
 
         <div className="app">
           <RandomChar />
+          <CharList />
         </div>
       </>
     );

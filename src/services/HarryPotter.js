@@ -19,12 +19,19 @@ class HarryPotter {
     return this.#transformCharacter(character);
   };
 
+  getCharacters = async () => {
+    const res = await this.getResourse(`${this.#apiBase}characters`);
+    return res.slice(0, 6).map(this.#transformCharacter);
+  };
+
   #transformCharacter = (res) => {
     return {
       id: res.index,
       name: res.fullName,
+      nickname: res.nickname,
       img: res.image,
       birth: res.birthdate,
+      inter: res.interpretedBys,
     };
   };
 }
