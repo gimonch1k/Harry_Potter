@@ -1,6 +1,7 @@
 @use "../style/variables" as *;
 
 .charinfo {
+  order: 2;
   &__background {
     padding: 20px;
     background-color: $dark-red;

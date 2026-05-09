@@ -5,6 +5,7 @@ import Menu from "../menu/Menu";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
 import CharInfo from "../charInfo/CharInfo";
+import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import "./App.scss";
 
@@ -35,10 +36,16 @@ class App extends Component {
         {isOpen ? <Menu closeMenu={this.closeMenu} /> : null}
 
         <div className="app">
-          <RandomChar />
+          <ErrorBoundary>
+            <RandomChar />
+          </ErrorBoundary>
           <div className="app__wrapper">
-            <CharInfo charId={selectedChar} />
-            <CharList onSelectedChar={this.onSelectedChar} />
+            <ErrorBoundary>
+              <CharInfo charId={selectedChar} />
+            </ErrorBoundary>
+            <ErrorBoundary>
+              <CharList onSelectedChar={this.onSelectedChar} />
+            </ErrorBoundary>
           </div>
         </div>
       </>

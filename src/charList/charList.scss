@@ -4,6 +4,7 @@
 .charlist {
   margin: 25px auto 0 auto;
   width: fit-content;
+  order: 1;
   &__cards {
     display: flex;
     flex-direction: column;
@@ -95,7 +96,7 @@
     margin-top: 0;
     &__cards {
       width: 640px;
-      justify-content: end;
+      justify-content: start;
       column-gap: 20px;
     }
     &__card {
