@@ -1,5 +1,3 @@
-import { Children } from "react";
-
 class HarryPotter {
   #apiBase = "https://potterapi-fedeperin.vercel.app/uk/";
 

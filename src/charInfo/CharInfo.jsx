@@ -3,6 +3,7 @@ import { Component } from "react";
 import HarryPotter from "../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 import "./charInfo.scss";
 
@@ -10,6 +11,7 @@ class CharInfo extends Component {
   state = {
     char: null,
     loading: false,
+    error: false,
   };
 
   harryPotter = new HarryPotter();
@@ -24,6 +26,14 @@ class CharInfo extends Component {
     }
   }
 
+  onCharLoaded = (char) => {
+    this.setState({ char, loading: false });
+  };
+
+  onError = () => {
+    this.setState({ loading: false, error: true });
+  };
+
   updateChar = () => {
     const { charId } = this.props;
 
@@ -36,22 +46,20 @@ class CharInfo extends Component {
     this.harryPotter
       .getCharacter(charId - 1)
       .then(this.onCharLoaded)
-      .catch();
-  };
-
-  onCharLoaded = (char) => {
-    this.setState({ char, loading: false });
+      .catch(this.onError);
   };
 
   render() {
-    const { char, loading } = this.state;
+    const { char, loading, error } = this.state;
 
-    const skeleton = !char && !loading ? <Skeleton /> : null;
+    const skeleton = loading || error || char ? null : <Skeleton />;
+    const errorMessage = error ? <ErrorMessage /> : null;
     const spinner = loading ? <Spinner /> : null;
-    const content = char && !loading ? <View char={char} /> : null;
+    const content = !(error || loading || !char) ? <View char={char} /> : null;
 
     return (
       <div className="charinfo">
+        {errorMessage}
         {skeleton}
         {spinner}
         {content}

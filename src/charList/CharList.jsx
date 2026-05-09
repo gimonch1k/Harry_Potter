@@ -2,6 +2,7 @@ import { Component } from "react";
 
 import HarryPotter from "../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 import logo from "../assets/img/logo-for-cards.png";
 
@@ -11,6 +12,7 @@ class CharList extends Component {
   state = {
     chars: [],
     loading: false,
+    error: false,
   };
 
   harryPotter = new HarryPotter();
@@ -21,11 +23,18 @@ class CharList extends Component {
 
   updateChars = () => {
     this.setState({ loading: true });
-    this.harryPotter.getCharacters().then(this.onCharsLoaded).catch();
+    this.harryPotter
+      .getCharacters()
+      .then(this.onCharsLoaded)
+      .catch(this.onError);
   };
 
   onCharsLoaded = (chars) => {
-    this.setState({ chars, loading: false });
+    this.setState({ chars, loading: false, error: false });
+  };
+
+  onError = () => {
+    this.setState({ loading: false, error: true });
   };
 
   createCards = (chars) => {
@@ -51,16 +60,18 @@ class CharList extends Component {
   };
 
   render() {
-    const { chars, loading } = this.state;
+    const { chars, loading, error } = this.state;
 
     const cards = this.createCards(chars);
 
-    const spinner = loading ? <Spinner /> : null;
-    const content = loading ? null : cards;
+    const errorMessage = error ? <ErrorMessage /> : null;
+    const spinner = loading && !error ? <Spinner /> : null;
+    const content = loading || error ? null : cards;
 
     return (
       <div className="charlist">
         <div className="charlist__cards">
+          {errorMessage}
           {spinner}
           {content}
         </div>

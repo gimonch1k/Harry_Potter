@@ -2,6 +2,7 @@ import { Component } from "react";
 
 import HarryPotter from "../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../errorMessage/ErrorMessage";
 
 import logo from "../assets/img/HP-logo.png";
 
@@ -11,6 +12,7 @@ class RandomChar extends Component {
   state = {
     char: {},
     loading: false,
+    error: false,
   };
 
   harryPotter = new HarryPotter();
@@ -23,7 +25,10 @@ class RandomChar extends Component {
     const random = Math.floor(Math.random() * 25);
     console.log(random);
     this.setState({ loading: true });
-    this.harryPotter.getCharacter(random).then(this.onCharLoaded).catch();
+    this.harryPotter
+      .getCharacter(random)
+      .then(this.onCharLoaded)
+      .catch(this.onError);
   };
 
   onCharLoaded = (char) => {
@@ -34,15 +39,21 @@ class RandomChar extends Component {
     this.updateChar();
   };
 
-  render() {
-    const { char, loading } = this.state;
+  onError = () => {
+    this.setState({ loading: false, error: true });
+  };
 
-    const spinner = loading ? <Spinner /> : null;
-    const content = loading ? null : <View char={char} />;
+  render() {
+    const { char, loading, error } = this.state;
+
+    const errorMessage = error ? <ErrorMessage /> : null;
+    const spinner = loading && !error ? <Spinner /> : null;
+    const content = loading || error ? null : <View char={char} />;
 
     return (
       <div className="randomchar">
         <div className="randomchar__persone">
+          {errorMessage}
           {content}
           {spinner}
         </div>
