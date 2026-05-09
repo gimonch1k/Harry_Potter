@@ -4,13 +4,14 @@ import Header from "../header/Header";
 import Menu from "../menu/Menu";
 import RandomChar from "../randomChar/RandomChar";
 import CharList from "../charList/CharList";
-import Skeleton from "../skeleton/Skeleton";
+import CharInfo from "../charInfo/CharInfo";
 
 import "./App.scss";
 
 class App extends Component {
   state = {
     isOpen: false,
+    selectedChar: null,
   };
 
   openMenu = () => {
@@ -21,8 +22,12 @@ class App extends Component {
     this.setState({ isOpen: false });
   };
 
+  onSelectedChar = (id) => {
+    this.setState({ selectedChar: id });
+  };
+
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, selectedChar } = this.state;
 
     return (
       <>
@@ -32,8 +37,8 @@ class App extends Component {
         <div className="app">
           <RandomChar />
           <div className="app__wrapper">
-            <Skeleton />
-            <CharList />
+            <CharInfo charId={selectedChar} />
+            <CharList onSelectedChar={this.onSelectedChar} />
           </div>
         </div>
       </>

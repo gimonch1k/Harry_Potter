@@ -31,7 +31,11 @@ class CharList extends Component {
   createCards = (chars) => {
     const elements = chars.map((item) => {
       return (
-        <div className="charlist__card" key={item.id}>
+        <div
+          className="charlist__card"
+          key={item.id}
+          onClick={() => this.props.onSelectedChar(item.id + 1)}
+        >
           <img
             src={item.img}
             alt={item.nickname}

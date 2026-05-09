@@ -1,3 +1,5 @@
+import { Children } from "react";
+
 class HarryPotter {
   #apiBase = "https://potterapi-fedeperin.vercel.app/uk/";
 
@@ -21,7 +23,7 @@ class HarryPotter {
 
   getCharacters = async () => {
     const res = await this.getResourse(`${this.#apiBase}characters`);
-    return res.slice(0, 6).map(this.#transformCharacter);
+    return res.slice(0, 9).map(this.#transformCharacter);
   };
 
   #transformCharacter = (res) => {
@@ -31,7 +33,8 @@ class HarryPotter {
       nickname: res.nickname,
       img: res.image,
       birth: res.birthdate,
-      inter: res.interpretedBys,
+      inter: res.interpretedBy,
+      children: res.children,
     };
   };
 }

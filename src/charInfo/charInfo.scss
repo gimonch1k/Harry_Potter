@@ -1,0 +1,77 @@
+@use "../style/variables" as *;
+
+.charinfo {
+  &__background {
+    padding: 20px;
+    background-color: $dark-red;
+  }
+  &__img {
+    margin: 0 auto;
+    width: 200px;
+    height: 285px;
+    object-fit: cover;
+  }
+  &__name {
+    margin-top: 20px;
+    font-size: 18px;
+    font-weight: 700;
+    color: $orange;
+    text-align: center;
+  }
+  &__title {
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: $orange;
+  }
+  &__children {
+    font-size: 16px;
+    color: $orange;
+    li {
+      margin: 10px 0 0 20px;
+    }
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .charinfo {
+    &__img {
+      width: 250px;
+    }
+  }
+}
+
+@media screen and (min-width: 425px) {
+  .charinfo {
+    &__background {
+      display: flex;
+      column-gap: 20px;
+    }
+    &__img {
+      width: 180px;
+      height: 257px;
+    }
+    &__name {
+      margin-top: 10px;
+    }
+    &__title {
+      margin-top: 60px;
+    }
+  }
+}
+
+@media screen and (min-width: 750px) {
+  .charinfo {
+    margin: 0 auto;
+    width: 455px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .charinfo {
+    width: 320px;
+    &__img {
+      width: 150px;
+    }
+  }
+}
