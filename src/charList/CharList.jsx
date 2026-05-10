@@ -11,26 +11,47 @@ import "./charList.scss";
 class CharList extends Component {
   state = {
     chars: [],
-    loading: false,
+    loading: true,
     error: false,
+    newItemsLoading: false,
+    offset: 0,
+    charEnded: false,
   };
 
   harryPotter = new HarryPotter();
 
   componentDidMount() {
-    this.updateChars();
+    this.onRequest(this.state.offset);
   }
 
-  updateChars = () => {
-    this.setState({ loading: true });
+  onRequest = (offset) => {
+    this.onCharsLoading();
     this.harryPotter
-      .getCharacters()
-      .then(this.onCharsLoaded)
+      .getCharacters(offset)
+      .then((newChars) => this.onCharsLoaded(newChars, offset))
       .catch(this.onError);
   };
 
-  onCharsLoaded = (chars) => {
-    this.setState({ chars, loading: false, error: false });
+  onCharsLoading = () => {
+    this.setState({ newItemsLoading: true });
+  };
+
+  onCharsLoaded = (newChars, offset) => {
+    let ended = false;
+
+    if (newChars.length < 9) {
+      ended = true;
+    }
+
+    this.setState(({ chars }) => ({
+      chars: offset === 0 ? newChars : [...chars, ...newChars],
+
+      loading: false,
+      error: false,
+      newItemsLoading: false,
+      offset: offset + 9,
+      charEnded: ended,
+    }));
   };
 
   onError = () => {
@@ -43,7 +64,7 @@ class CharList extends Component {
         <div
           className="charlist__card"
           key={item.id}
-          onClick={() => this.props.onSelectedChar(item.id + 1)}
+          onClick={() => this.props.onSelectedChar(item.id)}
         >
           <img
             src={item.img}
@@ -60,7 +81,8 @@ class CharList extends Component {
   };
 
   render() {
-    const { chars, loading, error } = this.state;
+    const { chars, loading, error, newItemsLoading, offset, charEnded } =
+      this.state;
 
     const cards = this.createCards(chars);
 
@@ -75,7 +97,14 @@ class CharList extends Component {
           {spinner}
           {content}
         </div>
-        <button className="charlist__btn">Догрузити</button>
+        <button
+          className="charlist__btn"
+          disabled={newItemsLoading}
+          onClick={() => this.onRequest(offset)}
+          style={{ display: charEnded ? "none" : "block" }}
+        >
+          Догрузити
+        </button>
       </div>
     );
   }
