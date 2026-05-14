@@ -16,6 +16,7 @@ class CharList extends Component {
     newItemsLoading: false,
     offset: 0,
     charEnded: false,
+    selectedCard: null,
   };
 
   harryPotter = new HarryPotter();
@@ -60,11 +61,19 @@ class CharList extends Component {
 
   createCards = (chars) => {
     const elements = chars.map((item) => {
+      const activeClass =
+        this.state.selectedCard === item.id
+          ? "charlist__card charlist__card-active"
+          : "charlist__card";
+
       return (
         <div
-          className="charlist__card"
+          className={activeClass}
           key={item.id}
-          onClick={() => this.props.onSelectedChar(item.id)}
+          onClick={() => {
+            this.props.onSelectedChar(item.id);
+            this.setState({ selectedCard: item.id });
+          }}
         >
           <img
             src={item.img}
