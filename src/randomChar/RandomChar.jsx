@@ -1,6 +1,6 @@
-import { Component } from "react";
+import { useEffect, useState } from "react";
 
-import HarryPotter from "../services/HarryPotter";
+import useHarryPotter from "../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
@@ -8,93 +8,69 @@ import logo from "../assets/img/HP-logo.png";
 
 import "./randomChar.scss";
 
-class RandomChar extends Component {
-  state = {
-    char: {},
-    loading: false,
-    error: false,
-  };
+const RandomChar = () => {
+  const { loading, error, getCharacter } = useHarryPotter();
 
-  harryPotter = new HarryPotter();
+  const [char, setChar] = useState({});
 
-  componentDidMount() {
-    this.updateChar();
-  }
+  useEffect(() => {
+    updateChar();
+  }, []);
 
-  updateChar = () => {
+  const updateChar = () => {
     const random = Math.floor(Math.random() * 25);
     console.log(random);
-    this.setState({ loading: true });
-    this.harryPotter
-      .getCharacter(random)
-      .then(this.onCharLoaded)
-      .catch(this.onError);
+
+    getCharacter(random).then(onCharLoaded);
   };
 
-  onCharLoaded = (char) => {
-    this.setState({ char, loading: false });
+  const onCharLoaded = (char) => {
+    setChar(char);
   };
 
-  onChangeChar = () => {
-    this.updateChar();
+  const onChangeChar = () => {
+    updateChar();
   };
 
-  onError = () => {
-    this.setState({ loading: false, error: true });
-  };
+  const errorMessage = error ? <ErrorMessage /> : null;
+  const spinner = loading && !error ? <Spinner /> : null;
+  const content = loading || error ? null : <View char={char} />;
 
-  render() {
-    const { char, loading, error } = this.state;
+  return (
+    <div className="randomchar">
+      <div className="randomchar__persone">
+        {errorMessage}
+        {content}
+        {spinner}
+      </div>
+      <div className="randomchar__description">
+        <div className="randomchar__description-title">Рандомний персонаж!</div>
+        <div className="randomchar__description-try">Можеш змінити 👇</div>
+        <button className="randomchar__description-btn" onClick={onChangeChar}>
+          Спробувати!
+        </button>
+        <img src={logo} alt="logo" className="randomchar__description-logo" />
+      </div>
+    </div>
+  );
+};
 
-    const errorMessage = error ? <ErrorMessage /> : null;
-    const spinner = loading && !error ? <Spinner /> : null;
-    const content = loading || error ? null : <View char={char} />;
-
-    return (
-      <div className="randomchar">
-        <div className="randomchar__persone">
-          {errorMessage}
-          {content}
-          {spinner}
-        </div>
-        <div className="randomchar__description">
-          <div className="randomchar__description-title">
-            Рандомний персонаж!
-          </div>
-          <div className="randomchar__description-try">Можеш змінити 👇</div>
-          <button
-            className="randomchar__description-btn"
-            onClick={this.onChangeChar}
-          >
-            Спробувати!
-          </button>
-          <img src={logo} alt="logo" className="randomchar__description-logo" />
+const View = (props) => {
+  return (
+    <div className="randomchar__persone-wrapper">
+      <img
+        src={props.char.img}
+        alt="random Char"
+        className="randomchar__persone-img"
+      />
+      <div className="randomchar__persone-descr">
+        <div className="randomchar__persone-name">{props.char.name}</div>
+        <div className="randomchar__persone-text">
+          Birthday - {props.char.birth}
         </div>
       </div>
-    );
-  }
-}
-
-class View extends Component {
-  render() {
-    const { char } = this.props;
-
-    return (
-      <div className="randomchar__persone-wrapper">
-        <img
-          src={char.img}
-          alt="random Char"
-          className="randomchar__persone-img"
-        />
-        <div className="randomchar__persone-descr">
-          <div className="randomchar__persone-name">{char.name}</div>
-          <div className="randomchar__persone-text">
-            Birthday - {char.birth}
-          </div>
-        </div>
-      </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default RandomChar;

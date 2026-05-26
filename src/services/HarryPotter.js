@@ -1,30 +1,22 @@
-class HarryPotter {
-  #apiBase = "https://potterapi-fedeperin.vercel.app/uk/";
+import { useHttp } from "../hooks/http.hook";
 
-  getResourse = async (url) => {
-    let res = await fetch(url);
+const useHarryPotter = () => {
+  const { loading, request, error } = useHttp();
 
-    if (!res.ok) {
-      throw new Error(
-        `Щось не так із сервером... URL: ${url}, status: ${res.status}`,
-      );
-    }
+  const _apiBase = "https://potterapi-fedeperin.vercel.app/uk/";
 
-    return await res.json();
-  };
-
-  getCharacter = async (id) => {
-    const res = await this.getResourse(`${this.#apiBase}characters`);
+  const getCharacter = async (id) => {
+    const res = await request(`${_apiBase}characters`);
     const character = res[id];
-    return this.#transformCharacter(character);
+    return _transformCharacter(character);
   };
 
-  getCharacters = async (offset = 0) => {
-    const res = await this.getResourse(`${this.#apiBase}characters`);
-    return res.slice(offset, offset + 9).map(this.#transformCharacter);
+  const getCharacters = async (offset = 0) => {
+    const res = await request(`${_apiBase}characters`);
+    return res.slice(offset, offset + 9).map(_transformCharacter);
   };
 
-  #transformCharacter = (res) => {
+  const _transformCharacter = (res) => {
     return {
       id: res.index + 1,
       name: res.fullName,
@@ -35,6 +27,8 @@ class HarryPotter {
       children: res.children,
     };
   };
-}
 
-export default HarryPotter;
+  return { loading, error, getCharacter, getCharacters };
+};
+
+export default useHarryPotter;

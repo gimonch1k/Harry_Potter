@@ -1,4 +1,4 @@
-import { Component } from "react";
+import { useState } from "react";
 
 import Header from "../header/Header";
 import Menu from "../menu/Menu";
@@ -9,48 +9,42 @@ import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 import "./App.scss";
 
-class App extends Component {
-  state = {
-    isOpen: false,
-    selectedChar: null,
+const App = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedChar, setSelectedChar] = useState(null);
+
+  const openMenu = () => {
+    setIsOpen(true);
   };
 
-  openMenu = () => {
-    this.setState({ isOpen: true });
+  const closeMenu = () => {
+    setIsOpen(false);
   };
 
-  closeMenu = () => {
-    this.setState({ isOpen: false });
+  const onSelectedChar = (id) => {
+    setSelectedChar(id);
   };
 
-  onSelectedChar = (id) => {
-    this.setState({ selectedChar: id });
-  };
+  return (
+    <>
+      <Header openMenu={openMenu} />
+      {isOpen ? <Menu closeMenu={closeMenu} /> : null}
 
-  render() {
-    const { isOpen, selectedChar } = this.state;
-
-    return (
-      <>
-        <Header openMenu={this.openMenu} />
-        {isOpen ? <Menu closeMenu={this.closeMenu} /> : null}
-
-        <div className="app">
+      <div className="app">
+        <ErrorBoundary>
+          <RandomChar />
+        </ErrorBoundary>
+        <div className="app__wrapper">
           <ErrorBoundary>
-            <RandomChar />
+            <CharInfo charId={selectedChar} />
           </ErrorBoundary>
-          <div className="app__wrapper">
-            <ErrorBoundary>
-              <CharInfo charId={selectedChar} />
-            </ErrorBoundary>
-            <ErrorBoundary>
-              <CharList onSelectedChar={this.onSelectedChar} />
-            </ErrorBoundary>
-          </div>
+          <ErrorBoundary>
+            <CharList onSelectedChar={onSelectedChar} />
+          </ErrorBoundary>
         </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default App;
