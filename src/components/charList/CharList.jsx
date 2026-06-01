@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 
-import useHarryPotter from "../services/HarryPotter";
+import useHarryPotter from "../../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
-import logo from "../assets/img/logo-for-cards.png";
+import logo from "../../assets/img/logo-for-cards.png";
 
 import "./charList.scss";
 
@@ -72,6 +72,8 @@ const CharList = ({ onSelectedChar }) => {
 
     return elements;
   };
+
+  console.log("render");
 
   const cards = createCards(chars);
 

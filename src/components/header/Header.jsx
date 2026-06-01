@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 import Burger from "../burger/Burger";
 import HeaderPages from "./HeaderPages";
@@ -12,7 +13,9 @@ class Header extends Component {
 
     return (
       <div className="header">
-        <div className="header__title">Гаррі Поттер</div>
+        <Link to="/" className="header__title">
+          Гаррі Поттер
+        </Link>
         <HeaderPages />
         <Burger openMenu={openMenu} />
       </div>

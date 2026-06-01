@@ -1,7 +1,7 @@
 import { Component } from "react";
 
-import logo from "../assets/img/Harry-Potter-logo.png";
-import close from "../assets/img/close.png";
+import logo from "../../assets/img/Harry-Potter-logo.png";
+import close from "../../assets/img/close.png";
 
 import "./menu.scss";
 

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-import useHarryPotter from "../services/HarryPotter";
+import useHarryPotter from "../../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
 import ErrorMessage from "../errorMessage/ErrorMessage";

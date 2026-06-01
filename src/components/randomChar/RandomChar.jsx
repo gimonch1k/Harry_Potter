@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 
-import useHarryPotter from "../services/HarryPotter";
+import useHarryPotter from "../../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 
-import logo from "../assets/img/HP-logo.png";
+import logo from "../../assets/img/HP-logo.png";
 
 import "./randomChar.scss";
 
