@@ -19,7 +19,6 @@ class HeaderPages extends Component {
         </NavLink>
         <div className="headerpages__divider">/</div>
         <NavLink
-          end
           style={({ isActive }) => ({
             color: isActive ? "#de9911" : "#fff",
           })}

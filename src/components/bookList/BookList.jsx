@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 import useHarryPotter from "../../services/HarryPotter";
 import Spinner from "../spinner/Spinner";
@@ -39,10 +40,12 @@ const BookList = () => {
   };
 
   const content = books.map((item) => (
-    <li className="booklist__item" key={item.id}>
-      <img src={item.cover} alt={item.title} className="booklist__img" />
-      <div className="booklist__title">{item.title}</div>
-      <div className="booklist__pages">{item.pages} pages</div>
+    <li key={item.id}>
+      <Link className="booklist__item" to={`/books/${item.id}`}>
+        <img src={item.cover} alt={item.title} className="booklist__img" />
+        <div className="booklist__title">{item.title}</div>
+        <div className="booklist__pages">{item.pages} pages</div>
+      </Link>
     </li>
   ));
 

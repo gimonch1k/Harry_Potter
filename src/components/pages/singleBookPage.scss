@@ -1,0 +1,69 @@
+@use "../../style/variables" as *;
+
+.singlebook {
+  max-width: 400px;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 20px;
+    color: $orange;
+  }
+  a {
+    font-size: 18px;
+  }
+  &__img {
+    margin: 0 auto;
+    width: auto;
+    height: 400px;
+    object-fit: cover;
+  }
+  &__release,
+  &__descr,
+  &__pages {
+    margin-top: 15px;
+    color: $orange;
+  }
+  &__price {
+    margin-top: 15px;
+    font-weight: 700;
+    color: green;
+  }
+  &__link {
+    font-weight: 700;
+    color: $dark-red;
+    width: fit-content;
+    display: block;
+    margin: 20px auto 0 auto;
+    transition: 0.5s all;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .singlebook {
+    max-width: 700px;
+    &__wrapper {
+      display: flex;
+      flex-direction: row;
+      column-gap: 50px;
+    }
+    &__release,
+    &__descr,
+    &__pages {
+      margin-top: 30px;
+      color: $orange;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .singlebook {
+    max-width: 800px;
+    &__title {
+      margin-top: 20px;
+    }
+  }
+}

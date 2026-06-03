@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 import logo from "../../assets/img/Harry-Potter-logo.png";
 import close from "../../assets/img/close.png";
@@ -18,12 +19,12 @@ class Menu extends Component {
             className="menu__close"
             onClick={closeMenu}
           />
-          <a href="#" className="menu__link">
+          <Link to="/" className="menu__link">
             Персонажі
-          </a>
-          <a href="#" className="menu__link">
+          </Link>
+          <Link to="/books" className="menu__link">
             Книжки
-          </a>
+          </Link>
           <img src={logo} alt="logo Harry Potter" className="menu__img" />
         </div>
       </div>

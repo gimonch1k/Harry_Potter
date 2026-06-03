@@ -16,6 +16,11 @@ const useHarryPotter = () => {
     return res.slice(offset, offset + 9).map(_transformCharacter);
   };
 
+  const getBook = async (id) => {
+    const res = await request(`${_apiBase}books`);
+    return _transformBook(res[id]);
+  };
+
   const getBooks = async (offset = 0) => {
     const res = await request(`${_apiBase}books`);
     return res.slice(offset, offset + 6).map(_transformBook);
@@ -45,7 +50,7 @@ const useHarryPotter = () => {
     };
   };
 
-  return { loading, error, getCharacter, getCharacters, getBooks };
+  return { loading, error, getCharacter, getCharacters, getBooks, getBook };
 };
 
 export default useHarryPotter;
